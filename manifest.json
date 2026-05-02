@@ -1,0 +1,90 @@
+{
+  "id": "pihole",
+  "name": "Pi-hole Stats",
+  "version": "0.1.0",
+  "description": "Display DNS query statistics from a local Pi-hole ad blocker.",
+  "author": "FiestaBoard Team",
+  "icon": "shield",
+  "category": "utility",
+  "repository": "https://github.com/Fiestaboard/fiestaboard-plugin--pihole",
+  "documentation": "README.md",
+  "min_refresh_seconds": 60,
+  "settings_schema": {
+    "type": "object",
+    "properties": {
+      "enabled": {
+        "type": "boolean",
+        "title": "Enabled",
+        "default": false
+      },
+      "pihole_host": {
+        "type": "string",
+        "title": "Pi-hole Host",
+        "description": "Hostname or IP address of your Pi-hole (e.g. 192.168.1.100 or pi.hole).",
+        "default": "pi.hole"
+      },
+      "api_token": {
+        "type": "string",
+        "title": "API Token",
+        "description": "Pi-hole API token from Settings > API/Web interface. Leave blank if not required.",
+        "default": ""
+      },
+      "refresh_seconds": {
+        "type": "integer",
+        "title": "Refresh Interval (seconds)",
+        "description": "How often to poll Pi-hole.",
+        "default": 60,
+        "minimum": 30
+      }
+    },
+    "required": [
+      "pihole_host"
+    ]
+  },
+  "variables": {
+    "groups": {
+      "stats": {
+        "label": "DNS Stats"
+      }
+    },
+    "simple": {
+      "dns_queries_today": {
+        "description": "Total DNS queries today",
+        "type": "integer",
+        "max_length": 8,
+        "group": "stats",
+        "example": "12435"
+      },
+      "ads_blocked": {
+        "description": "Number of ads/queries blocked today",
+        "type": "integer",
+        "max_length": 7,
+        "group": "stats",
+        "example": "1823"
+      },
+      "ads_percentage": {
+        "description": "Percentage of queries blocked",
+        "type": "number",
+        "max_length": 5,
+        "group": "stats",
+        "example": "14.7"
+      },
+      "status": {
+        "description": "Pi-hole status (enabled/disabled)",
+        "type": "string",
+        "max_length": 10,
+        "group": "stats",
+        "example": "enabled"
+      }
+    }
+  },
+  "screenshots": [
+    {
+      "src": "docs/board-display.png",
+      "alt": "Pi-hole Stats displayed on a Vestaboard",
+      "caption": "Example board output using the default template",
+      "primary": true
+    }
+  ],
+  "api_docs": "https://docs.pi-hole.net/api/"
+}
