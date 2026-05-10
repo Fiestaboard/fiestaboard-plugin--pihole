@@ -1,7 +1,7 @@
 {
   "id": "pihole",
   "name": "Pi-hole Stats",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Display DNS query statistics from a local Pi-hole ad blocker.",
   "author": "FiestaBoard Team",
   "icon": "shield",
@@ -86,5 +86,48 @@
       "primary": true
     }
   ],
-  "api_docs": "https://docs.pi-hole.net/api/"
+  "api_docs": "https://docs.pi-hole.net/api/",
+  "demo": {
+    "name": "Pi-hole Stats Demo",
+    "device_type": "flagship",
+    "config": {
+      "enabled": true,
+      "pihole_host": "pi.hole",
+      "refresh_seconds": 60
+    },
+    "template": [
+      "Pi-hole Stats",
+      "Status: {{pihole.status}}",
+      "",
+      "Queries: {{pihole.dns_queries_today}}",
+      "Blocked: {{pihole.ads_blocked}}",
+      "  ({{pihole.ads_percentage}}% filtered)"
+    ],
+    "line_metadata": [
+      {
+        "alignment": "center",
+        "wrap": false
+      },
+      {
+        "alignment": "center",
+        "wrap": false
+      },
+      {
+        "alignment": "left",
+        "wrap": false
+      },
+      {
+        "alignment": "left",
+        "wrap": false
+      },
+      {
+        "alignment": "left",
+        "wrap": false
+      },
+      {
+        "alignment": "left",
+        "wrap": false
+      }
+    ]
+  }
 }
