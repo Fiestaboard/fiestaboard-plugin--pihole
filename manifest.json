@@ -1,7 +1,7 @@
 {
   "id": "pihole",
   "name": "Pi-hole Stats",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Display DNS query statistics from a local Pi-hole ad blocker.",
   "author": "FiestaBoard Team",
   "icon": "shield",
